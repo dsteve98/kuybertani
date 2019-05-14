@@ -5,6 +5,7 @@ using UnityEngine;
 public class FieldBehaviour : MonoBehaviour
 {
     public bool playerInteract;
+    public int state = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -22,7 +23,11 @@ public class FieldBehaviour : MonoBehaviour
     {
         if (other.CompareTag("hitbox"))
         {
-            Debug.Log("interact active");
+            if(PlayerMovement.currentEquip == "seed" && state == 0)
+            {
+                state = 1;
+                Debug.Log(state);
+            }
         }
     }
 }

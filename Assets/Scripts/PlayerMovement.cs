@@ -16,8 +16,8 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 change;
     private Animator animator;
     public int currentEquipCount; // barehand, hoe, schyte, watering can
-    public string currentEquip;
-    string[] equipList = new string[4]{"barehand", "hoe", "schyte", "watercan"};
+    public static string currentEquip;
+    string[] equipList = new string[5]{"barehand", "hoe", "schyte", "watercan","seed"};
     
 
 
@@ -43,7 +43,7 @@ public class PlayerMovement : MonoBehaviour
         else if (Input.GetButtonDown("change equip"))
         {
             currentEquipCount++;
-            currentEquipCount %= 4;
+            currentEquipCount %= equipList.Length;
             currentEquip = equipList[currentEquipCount];
             Debug.Log(currentEquip);
         }
