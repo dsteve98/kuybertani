@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class FieldBehaviour : MonoBehaviour
 {
+    public bool playerInteract;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -14,5 +16,13 @@ public class FieldBehaviour : MonoBehaviour
     void Update()
     {
         
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("hitbox"))
+        {
+            Debug.Log("interact active");
+        }
     }
 }

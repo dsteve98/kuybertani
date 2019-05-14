@@ -59,7 +59,7 @@ public class PlayerMovement : MonoBehaviour
         currentState = PlayerState.interact;
         yield return null;
         animator.SetBool("interacting", false);
-        yield return new WaitForSeconds(.2f);
+        yield return new WaitForSeconds(.25f);
         currentState = PlayerState.walk;
     }
 
