@@ -4,8 +4,13 @@ using UnityEngine;
 
 public class FieldBehaviour : MonoBehaviour
 {
-    public bool playerInteract;
+    public Sprite[] plantSprites;
     public int state = 0;
+
+    void Awake()
+    {
+        
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -16,7 +21,7 @@ public class FieldBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -25,8 +30,9 @@ public class FieldBehaviour : MonoBehaviour
         {
             if(PlayerMovement.currentEquip == "seed" && state == 0)
             {
-                state = 1;
-                Debug.Log(state);
+                GetComponent<SpriteRenderer>().sprite = plantSprites[0];
+                //Debug.Log(plantSprites.Length);
+                //Debug.Log(state);
             }
         }
     }
