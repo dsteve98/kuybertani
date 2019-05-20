@@ -6897,9 +6897,20 @@ PrefabInstance:
       objectReference: {fileID: 9100000, guid: 7a8da011fab43a24b9ebd02935f3918d, type: 2}
     - target: {fileID: 1626863624001657118, guid: d02941036926309458efd3c5905504f9,
         type: 3}
-      propertyPath: timeperstep
-      value: 5
+      propertyPath: plantSprites.Array.size
+      value: 43
       objectReference: {fileID: 0}
+    - target: {fileID: 1626863624001657118, guid: d02941036926309458efd3c5905504f9,
+        type: 3}
+      propertyPath: timeperstep
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1626863624001657118, guid: d02941036926309458efd3c5905504f9,
+        type: 3}
+      propertyPath: plantSprites.Array.data[42]
+      value: 
+      objectReference: {fileID: 21300084, guid: f1bee0245cf26d84da17a6d1eee8b917,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d02941036926309458efd3c5905504f9, type: 3}
 --- !u!1001 &3482671582018282703

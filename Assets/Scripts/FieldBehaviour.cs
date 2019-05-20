@@ -41,6 +41,15 @@ public class FieldBehaviour : MonoBehaviour
         {
             gameObject.transform.GetChild(1).gameObject.SetActive(true);
         }
+        else
+        {
+            waterLevel = 6;
+            currCountdownValue = 0;
+            gameObject.transform.GetChild(0).gameObject.SetActive(false);
+            gameObject.transform.GetChild(1).gameObject.SetActive(false);
+            GetComponent<SpriteRenderer>().sprite = plantSprites[42];
+            state = 0;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -106,7 +115,7 @@ public class FieldBehaviour : MonoBehaviour
                     StartCoroutine(StartCountdown());
                 }
             }
-            if(PlayerMovement.main.currentEquip == "watercan" && PlayerMovement.main.watercount > 0 && needWater == true)
+            if (PlayerMovement.main.currentEquip == "watercan" && PlayerMovement.main.watercount > 0 && needWater == true)
             {
                 waterLevel = 6;
                 needWater = false;
@@ -119,7 +128,20 @@ public class FieldBehaviour : MonoBehaviour
                     state += 1;
                 }
             }
-
+            else if (PlayerMovement.main.currentEquip == "barehand" && state == 4)
+            {
+                if (planttype == 0 || planttype == 4 || planttype == 5 || planttype == 6)
+                {
+                    GetComponent<SpriteRenderer>().sprite = plantSprites[state * 7 + planttype];
+                    state = 2;
+                    StartCoroutine(StartCountdown());
+                }
+                else
+                {
+                    GetComponent<SpriteRenderer>().sprite = plantSprites[42];
+                    state = 0;
+                }
+            }
         }
     }
 
