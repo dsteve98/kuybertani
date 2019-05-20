@@ -8,22 +8,39 @@ public class FieldBehaviour : MonoBehaviour
     [SerializeField]
     private Sprite[] plantSprites;
     private int state = 0;
-    private int waterlevel = 4;
+    private int waterLevel = 6;
     private int planttype;
     private int progresslimit = 2;
     private int progress = 0;
+    private bool needWater;
+    private float currCountdownValue = 0;
+    public float timeperstep;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        gameObject.transform.GetChild(0).gameObject.SetActive(false);
+        gameObject.transform.GetChild(1).gameObject.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        if (waterLevel > 4)
+        {
+            gameObject.transform.GetChild(0).gameObject.SetActive(false);
+            gameObject.transform.GetChild(1).gameObject.SetActive(false);
+        }
+        else if (waterLevel > 2)
+        {
+            gameObject.transform.GetChild(0).gameObject.SetActive(true);
+            needWater = true;
+        }
+        else if (waterLevel > 0)
+        {
+            gameObject.transform.GetChild(1).gameObject.SetActive(true);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -32,13 +49,13 @@ public class FieldBehaviour : MonoBehaviour
         {
             if(state == 0)
             {
-                Debug.Log(PlayerMovement.main.seed[2]);
                 if (PlayerMovement.main.currentEquip == "tomatoseed" && PlayerMovement.main.seed[0] != 0)
                 {
                     GetComponent<SpriteRenderer>().sprite = plantSprites[0];
                     planttype = 0;
                     state = 1;
                     Debug.Log("plant tomato");
+                    StartCoroutine(StartCountdown());
                 }
                 else if (PlayerMovement.main.currentEquip == "potatoseed" && PlayerMovement.main.seed[1] != 0)
                 {
@@ -46,6 +63,7 @@ public class FieldBehaviour : MonoBehaviour
                     planttype = 1;
                     state = 1;
                     Debug.Log("plant potato");
+                    StartCoroutine(StartCountdown());
                 }
                 else if (PlayerMovement.main.currentEquip == "carrotseed" && PlayerMovement.main.seed[2] != 0)
                 {
@@ -53,6 +71,7 @@ public class FieldBehaviour : MonoBehaviour
                     planttype = 2;
                     state = 1;
                     Debug.Log("plant carrot");
+                    StartCoroutine(StartCountdown());
                 }
                 else if (PlayerMovement.main.currentEquip == "broccoliseed" && PlayerMovement.main.seed[3] != 0)
                 {
@@ -60,6 +79,7 @@ public class FieldBehaviour : MonoBehaviour
                     planttype = 3;
                     state = 1;
                     Debug.Log("plant broccoli");
+                    StartCoroutine(StartCountdown());
                 }
                 else if (PlayerMovement.main.currentEquip == "strawberryseed" && PlayerMovement.main.seed[4] != 0)
                 {
@@ -67,6 +87,7 @@ public class FieldBehaviour : MonoBehaviour
                     planttype = 4;
                     state = 1;
                     Debug.Log("plant strawberry");
+                    StartCoroutine(StartCountdown());
                 }
                 else if (PlayerMovement.main.currentEquip == "cucumberseed" && PlayerMovement.main.seed[5] != 0)
                 {
@@ -74,6 +95,7 @@ public class FieldBehaviour : MonoBehaviour
                     planttype = 5;
                     state = 1;
                     Debug.Log("plant cucumber");
+                    StartCoroutine(StartCountdown());
                 }
                 else if (PlayerMovement.main.currentEquip == "cornseed" && PlayerMovement.main.seed[6] != 0)
                 {
@@ -81,12 +103,16 @@ public class FieldBehaviour : MonoBehaviour
                     planttype = 6;
                     state = 1;
                     Debug.Log("plant corn");
+                    StartCoroutine(StartCountdown());
                 }
             }
-            if(PlayerMovement.main.currentEquip == "watercan" && PlayerMovement.main.watercount > 0)
+            if(PlayerMovement.main.currentEquip == "watercan" && PlayerMovement.main.watercount > 0 && needWater == true)
             {
+                waterLevel = 6;
+                needWater = false;
                 progress += 1;
-                if(progress == progresslimit && state < 4)
+                currCountdownValue = 0;
+                if (progress == progresslimit && state < 4)
                 {
                     GetComponent<SpriteRenderer>().sprite = plantSprites[state*7+planttype];
                     progress = 0;
@@ -94,6 +120,27 @@ public class FieldBehaviour : MonoBehaviour
                 }
             }
 
+        }
+    }
+
+    private IEnumerator StartCountdown()
+    {
+        while (true)
+        {
+            //Debug.Log("Countdown: " + currCountdownValue);
+            yield return new WaitForSeconds(1.0f);
+            currCountdownValue++;
+            if (state == 0 || state == 4)
+            {
+                waterLevel = 6;
+                currCountdownValue = 0;
+                break;
+            }
+            if (currCountdownValue >= timeperstep)
+            {
+                waterLevel--;
+                currCountdownValue = 0;
+            }
         }
     }
 }

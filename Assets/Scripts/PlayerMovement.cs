@@ -34,6 +34,7 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         currentState = PlayerState.walk;
+        currentEquip = equipList[0];
         myRigidBody = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         Debug.Log(seed[0]+seed[1]+seed[2]+seed[3]);
