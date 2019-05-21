@@ -64,7 +64,7 @@ public class FieldBehaviour : MonoBehaviour
                     GetComponent<SpriteRenderer>().sprite = plantSprites[0];
                     planttype = 0;
                     state = 1;
-                    Debug.Log("plant tomato");
+                    //Debug.Log("plant tomato");
                     StartCoroutine(StartCountdown());
                     gameObject.tag = "plant";
                 }
@@ -73,7 +73,7 @@ public class FieldBehaviour : MonoBehaviour
                     GetComponent<SpriteRenderer>().sprite = plantSprites[1];
                     planttype = 1;
                     state = 1;
-                    Debug.Log("plant potato");
+                    //Debug.Log("plant potato");
                     StartCoroutine(StartCountdown());
                     gameObject.tag = "plant";
                 }
@@ -82,7 +82,7 @@ public class FieldBehaviour : MonoBehaviour
                     GetComponent<SpriteRenderer>().sprite = plantSprites[2];
                     planttype = 2;
                     state = 1;
-                    Debug.Log("plant carrot");
+                    //Debug.Log("plant carrot");
                     StartCoroutine(StartCountdown());
                     gameObject.tag = "plant";
                 }
@@ -91,7 +91,7 @@ public class FieldBehaviour : MonoBehaviour
                     GetComponent<SpriteRenderer>().sprite = plantSprites[3];
                     planttype = 3;
                     state = 1;
-                    Debug.Log("plant broccoli");
+                    //Debug.Log("plant broccoli");
                     StartCoroutine(StartCountdown());
                     gameObject.tag = "plant";
                 }
@@ -100,7 +100,7 @@ public class FieldBehaviour : MonoBehaviour
                     GetComponent<SpriteRenderer>().sprite = plantSprites[4];
                     planttype = 4;
                     state = 1;
-                    Debug.Log("plant strawberry");
+                    //Debug.Log("plant strawberry");
                     StartCoroutine(StartCountdown());
                     gameObject.tag = "plant";
                 }
@@ -109,7 +109,7 @@ public class FieldBehaviour : MonoBehaviour
                     GetComponent<SpriteRenderer>().sprite = plantSprites[5];
                     planttype = 5;
                     state = 1;
-                    Debug.Log("plant cucumber");
+                    //Debug.Log("plant cucumber");
                     StartCoroutine(StartCountdown());
                     gameObject.tag = "plant";
                 }
@@ -118,7 +118,7 @@ public class FieldBehaviour : MonoBehaviour
                     GetComponent<SpriteRenderer>().sprite = plantSprites[6];
                     planttype = 6;
                     state = 1;
-                    Debug.Log("plant corn");
+                    //Debug.Log("plant corn");
                     StartCoroutine(StartCountdown());
                     gameObject.tag = "plant";
                 }
@@ -149,6 +149,7 @@ public class FieldBehaviour : MonoBehaviour
                     GetComponent<SpriteRenderer>().sprite = plantSprites[42];
                     state = 0;
                 }
+                PlayerMovement.main.harvest[planttype] += 1;
             }
         }
     }

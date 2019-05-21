@@ -17,11 +17,13 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D myRigidBody;
     private Vector3 change;
     private Animator animator;
-    private int currentEquipCount; // barehand, hoe, schyte, watering can
+    public int currentEquipCount;
     public string currentEquip;
     private readonly string[] equipList = new string[11]{"barehand", "hoe", "schyte", "watercan", "tomatoseed", "potatoseed", "carrotseed", "broccoliseed", "strawberryseed", "cucumberseed", "cornseed" };
     public int[] seed;
     public int watercount;
+    public int[] harvest;
+    public int money;
 
 
     // Start is called before the first frame update
@@ -37,7 +39,6 @@ public class PlayerMovement : MonoBehaviour
         currentEquip = equipList[0];
         myRigidBody = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-        Debug.Log(seed[0]+seed[1]+seed[2]+seed[3]);
     }
 
     // Update is called once per frame
@@ -99,8 +100,17 @@ public class PlayerMovement : MonoBehaviour
 
     void MoveCharacter()
     {
-        myRigidBody.MovePosition(
-            transform.position + change * speed * Time.deltaTime
-        );
+        if((change.x * change.y) == 0)
+        {
+            myRigidBody.MovePosition(
+                transform.position + change * speed * Time.deltaTime
+            );
+        }
+        else
+        {
+            myRigidBody.MovePosition(
+                transform.position + change * speed * 0.707f * Time.deltaTime
+            );
+        }
     }
 }
