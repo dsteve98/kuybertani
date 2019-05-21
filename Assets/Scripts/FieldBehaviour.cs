@@ -49,6 +49,7 @@ public class FieldBehaviour : MonoBehaviour
             gameObject.transform.GetChild(1).gameObject.SetActive(false);
             GetComponent<SpriteRenderer>().sprite = plantSprites[42];
             state = 0;
+            gameObject.tag = "field";
         }
     }
 
@@ -65,6 +66,7 @@ public class FieldBehaviour : MonoBehaviour
                     state = 1;
                     Debug.Log("plant tomato");
                     StartCoroutine(StartCountdown());
+                    gameObject.tag = "plant";
                 }
                 else if (PlayerMovement.main.currentEquip == "potatoseed" && PlayerMovement.main.seed[1] != 0)
                 {
@@ -73,6 +75,7 @@ public class FieldBehaviour : MonoBehaviour
                     state = 1;
                     Debug.Log("plant potato");
                     StartCoroutine(StartCountdown());
+                    gameObject.tag = "plant";
                 }
                 else if (PlayerMovement.main.currentEquip == "carrotseed" && PlayerMovement.main.seed[2] != 0)
                 {
@@ -81,6 +84,7 @@ public class FieldBehaviour : MonoBehaviour
                     state = 1;
                     Debug.Log("plant carrot");
                     StartCoroutine(StartCountdown());
+                    gameObject.tag = "plant";
                 }
                 else if (PlayerMovement.main.currentEquip == "broccoliseed" && PlayerMovement.main.seed[3] != 0)
                 {
@@ -89,6 +93,7 @@ public class FieldBehaviour : MonoBehaviour
                     state = 1;
                     Debug.Log("plant broccoli");
                     StartCoroutine(StartCountdown());
+                    gameObject.tag = "plant";
                 }
                 else if (PlayerMovement.main.currentEquip == "strawberryseed" && PlayerMovement.main.seed[4] != 0)
                 {
@@ -97,6 +102,7 @@ public class FieldBehaviour : MonoBehaviour
                     state = 1;
                     Debug.Log("plant strawberry");
                     StartCoroutine(StartCountdown());
+                    gameObject.tag = "plant";
                 }
                 else if (PlayerMovement.main.currentEquip == "cucumberseed" && PlayerMovement.main.seed[5] != 0)
                 {
@@ -105,6 +111,7 @@ public class FieldBehaviour : MonoBehaviour
                     state = 1;
                     Debug.Log("plant cucumber");
                     StartCoroutine(StartCountdown());
+                    gameObject.tag = "plant";
                 }
                 else if (PlayerMovement.main.currentEquip == "cornseed" && PlayerMovement.main.seed[6] != 0)
                 {
@@ -113,6 +120,7 @@ public class FieldBehaviour : MonoBehaviour
                     state = 1;
                     Debug.Log("plant corn");
                     StartCoroutine(StartCountdown());
+                    gameObject.tag = "plant";
                 }
             }
             if (PlayerMovement.main.currentEquip == "watercan" && PlayerMovement.main.watercount > 0 && needWater == true)
