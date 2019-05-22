@@ -31,6 +31,11 @@ public class Timer : MonoBehaviour
         
     }
 
+    public void StartTimer()
+    {
+        StartCoroutine(CountDown());
+    }
+
     IEnumerator CountDown()
     {
         isPaused = false;

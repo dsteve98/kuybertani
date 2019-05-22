@@ -57,7 +57,7 @@ public class FieldBehaviour : MonoBehaviour
     {
         if (other.CompareTag("hitbox"))
         {
-            if(state == 0)
+            if (state == 0)
             {
                 if (PlayerMovement.main.currentEquip == "tomatoseed" && PlayerMovement.main.seed[0] != 0)
                 {
@@ -131,7 +131,7 @@ public class FieldBehaviour : MonoBehaviour
                 currCountdownValue = 0;
                 if (progress == progresslimit && state < 4)
                 {
-                    GetComponent<SpriteRenderer>().sprite = plantSprites[state*7+planttype];
+                    GetComponent<SpriteRenderer>().sprite = plantSprites[state * 7 + planttype];
                     progress = 0;
                     state += 1;
                 }
@@ -152,6 +152,18 @@ public class FieldBehaviour : MonoBehaviour
                 PlayerMovement.main.harvest[planttype] += 1;
             }
         }
+        else if (other.CompareTag("enemy"))
+        {
+            Debug.Log("enemy in range");
+            waterLevel = 6;
+            currCountdownValue = 0;
+            gameObject.transform.GetChild(0).gameObject.SetActive(false);
+            gameObject.transform.GetChild(1).gameObject.SetActive(false);
+            GetComponent<SpriteRenderer>().sprite = plantSprites[42];
+            state = 0;
+            gameObject.tag = "field";
+        }
+        else Debug.Log(other.tag);
     }
 
     private IEnumerator StartCountdown()
