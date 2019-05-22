@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public enum PlayerState
 {
@@ -24,7 +25,12 @@ public class PlayerMovement : MonoBehaviour
     public int watercount;
     public int[] harvest;
     public int money;
-
+    [SerializeField]
+    private Image equipImage;
+    [SerializeField]
+    private Sprite[] equipSprite;
+    [SerializeField]
+    private Text equipText;
 
     // Start is called before the first frame update
 
@@ -65,6 +71,8 @@ public class PlayerMovement : MonoBehaviour
             currentEquipCount++;
             currentEquipCount %= equipList.Length;
             currentEquip = equipList[currentEquipCount];
+            equipText.text = currentEquip;
+            equipImage.sprite = equipSprite[currentEquipCount];
             Debug.Log(currentEquip);
         }
         else if(currentState == PlayerState.walk)
