@@ -138,6 +138,7 @@ public class FieldBehaviour : MonoBehaviour
             }
             else if (PlayerMovement.main.currentEquip == "barehand" && state == 4)
             {
+                SoundManagerScript.PlaySound("panen");
                 if (planttype == 0 || planttype == 4 || planttype == 5 || planttype == 6)
                 {
                     GetComponent<SpriteRenderer>().sprite = plantSprites[state * 7 + planttype];

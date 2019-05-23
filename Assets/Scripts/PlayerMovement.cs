@@ -57,13 +57,41 @@ public class PlayerMovement : MonoBehaviour
         if(Input.GetButtonDown("interact") && currentState != PlayerState.interact)
         {
             StartCoroutine(InteractCo());
-            if (currentEquip == "tomatoseed" && seed[0] > 0) seed[0] -= 1;
-            else if (currentEquip == "potatoseed" && seed[1] > 0) seed[1] -= 1;
-            else if (currentEquip == "carrotseed" && seed[2] > 0) seed[2] -= 1;
-            else if (currentEquip == "broccoliseed" && seed[3] > 0) seed[3] -= 1;
-            else if (currentEquip == "strawberryseed" && seed[4] > 0) seed[4] -= 1;
-            else if (currentEquip == "cucumberseed" && seed[5] > 0) seed[5] -= 1;
-            else if (currentEquip == "cornseed" && seed[6] > 0) seed[6] -= 1;
+            if (currentEquip == "tomatoseed" && seed[0] > 0)
+            {
+                SoundManagerScript.PlaySound("tanam");
+                seed[0] -= 1;
+            }
+            else if (currentEquip == "potatoseed" && seed[1] > 0)
+            {
+                SoundManagerScript.PlaySound("tanam");
+                seed[1] -= 1;
+            }
+            else if (currentEquip == "carrotseed" && seed[2] > 0)
+            {
+                SoundManagerScript.PlaySound("tanam");
+                seed[2] -= 1;
+            }
+            else if (currentEquip == "broccoliseed" && seed[3] > 0)
+            {
+                SoundManagerScript.PlaySound("tanam");
+                seed[3] -= 1;
+            }
+            else if (currentEquip == "strawberryseed" && seed[4] > 0)
+            {
+                SoundManagerScript.PlaySound("tanam");
+                seed[4] -= 1;
+            }
+            else if (currentEquip == "cucumberseed" && seed[5] > 0)
+            {
+                SoundManagerScript.PlaySound("tanam");
+                seed[5] -= 1;
+            }
+            else if (currentEquip == "cornseed" && seed[6] > 0)
+            {
+                SoundManagerScript.PlaySound("tanam");
+                seed[6] -= 1;
+            }
             else if (currentEquip == "watercan" && watercount > 0) watercount -= 1;
         }
         else if(Input.GetButtonDown("change equip"))
