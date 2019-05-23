@@ -16,6 +16,8 @@ public class Timer : MonoBehaviour
     private int countTime = 1;
     public Rigidbody2D ball;
     Vector2 sp = new Vector2(0f, 2.1f);
+    public GameObject timeZero;
+    public Text score;
 
     // Start is called before the first frame update
 
@@ -60,6 +62,12 @@ public class Timer : MonoBehaviour
             mins = Mathf.FloorToInt(timeLeft / 60);
             secs = Mathf.FloorToInt(timeLeft % 60);
             GetComponent<Text>().text = mins.ToString("00") + ":" + secs.ToString("00");
+            if(timeLeft < 1)
+            {
+                Time.timeScale = 0;
+                score.text = "Your score is : " + PlayerMovement.main.money;
+                timeZero.SetActive(true);
+            }
         }
     }
 

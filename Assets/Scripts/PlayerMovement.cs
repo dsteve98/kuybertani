@@ -20,7 +20,7 @@ public class PlayerMovement : MonoBehaviour
     private Animator animator;
     public int currentEquipCount;
     public string currentEquip;
-    private readonly string[] equipList = new string[11]{"barehand", "hammer", "schyte", "watercan", "tomatoseed", "potatoseed", "carrotseed", "broccoliseed", "strawberryseed", "cucumberseed", "cornseed" };
+    private readonly string[] equipList = new string[9]{"barehand", "hammer", "schyte", "watercan", "tomatoseed", "potatoseed", "carrotseed",/* "broccoliseed", "strawberryseed",*/ "cucumberseed", "cornseed" };
     public int[] seed;
     public int watercount;
     public int[] harvest;
@@ -71,7 +71,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 SoundManagerScript.PlaySound("tanam");
                 seed[2] -= 1;
-            }
+            }/*
             else if (currentEquip == "broccoliseed" && seed[3] > 0)
             {
                 SoundManagerScript.PlaySound("tanam");
@@ -81,7 +81,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 SoundManagerScript.PlaySound("tanam");
                 seed[4] -= 1;
-            }
+            }*/
             else if (currentEquip == "cucumberseed" && seed[5] > 0)
             {
                 SoundManagerScript.PlaySound("tanam");

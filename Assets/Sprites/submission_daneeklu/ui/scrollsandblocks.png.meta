@@ -4,6 +4,8 @@ TextureImporter:
   fileIDToRecycleName:
     21300000: scrollsandblocks_0
     21300002: scrollsandblocks_1
+    21300004: scrollsandblocks_2
+    21300006: scrollsandblocks_3
   externalObjects: {}
   serializedVersion: 9
   mipmaps:
@@ -114,13 +116,53 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 13, y: 13, z: 17, w: 17}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
       spriteID: 196843f10f3b309418ffb232b4da2ab6
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scrollsandblocks_2
+      rect:
+        serializedVersion: 2
+        x: 353
+        y: 0
+        width: 191
+        height: 192
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a663c83c4d2f96046ace6a3fee0e285c
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scrollsandblocks_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 224
+        width: 96
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 26aa56f53b8d5304488b8e7ef7a90551
       vertices: []
       indices: 
       edges: []
