@@ -20,7 +20,7 @@ public class PlayerMovement : MonoBehaviour
     private Animator animator;
     public int currentEquipCount;
     public string currentEquip;
-    private readonly string[] equipList = new string[11]{"barehand", "hoe", "schyte", "watercan", "tomatoseed", "potatoseed", "carrotseed", "broccoliseed", "strawberryseed", "cucumberseed", "cornseed" };
+    private readonly string[] equipList = new string[11]{"barehand", "hammer", "schyte", "watercan", "tomatoseed", "potatoseed", "carrotseed", "broccoliseed", "strawberryseed", "cucumberseed", "cornseed" };
     public int[] seed;
     public int watercount;
     public int[] harvest;
@@ -87,7 +87,7 @@ public class PlayerMovement : MonoBehaviour
         currentState = PlayerState.interact;
         yield return null;
         animator.SetBool("interacting", false);
-        yield return new WaitForSeconds(.25f);
+        yield return new WaitForSeconds(.2f);
         currentState = PlayerState.walk;
     }
 

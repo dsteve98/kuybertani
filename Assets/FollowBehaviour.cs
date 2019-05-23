@@ -19,10 +19,14 @@ public class FollowBehaviour : StateMachineBehaviour
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if (animator.transform.position.x > plantPos.transform.position.x) posDiff = -1;
-        else posDiff = 1;
-        animator.SetFloat("moveX", posDiff);
-        animator.transform.position = Vector2.MoveTowards(animator.transform.position, plantPos.position, speed * Time.deltaTime);
+        if (animator.transform.position == plantPos.position) animator.SetBool("isFollow", false);
+        else
+        {
+            if (animator.transform.position.x > plantPos.transform.position.x) posDiff = -1;
+            else posDiff = 1;
+            animator.SetFloat("moveX", posDiff);
+            animator.transform.position = Vector2.MoveTowards(animator.transform.position, plantPos.position, speed * Time.deltaTime);
+        }
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
@@ -31,19 +35,13 @@ public class FollowBehaviour : StateMachineBehaviour
         
     }
 
-    IEnumerator RefreshSearch(Animator animator)
-    {
-        yield return new WaitForSeconds(3);
-        plantPos = FindClosestEnemy(animator);
-    }
-
     public Transform FindClosestEnemy(Animator animator)
     {
         GameObject[] gos;
         gos = GameObject.FindGameObjectsWithTag("plant");
         if (gos.Length == 0)
         {
-            animator.SetBool("isFollow", true);
+            animator.SetBool("isFollow", false);
             return animator.transform;
         }
         else

@@ -163,7 +163,6 @@ public class FieldBehaviour : MonoBehaviour
             state = 0;
             gameObject.tag = "field";
         }
-        else Debug.Log(other.tag);
     }
 
     private IEnumerator StartCountdown()
