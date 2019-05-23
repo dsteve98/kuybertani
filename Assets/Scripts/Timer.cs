@@ -11,10 +11,11 @@ public class Timer : MonoBehaviour
     private int mins;
     private int secs;
     public bool isPaused;
-    public GameObject prefab;
     public int enemyNumber;
     private float baseTime;
     private int countTime = 1;
+    public Rigidbody2D ball;
+    Vector2 sp = new Vector2(0f, 2.1f);
 
     // Start is called before the first frame update
 
@@ -53,16 +54,20 @@ public class Timer : MonoBehaviour
             timePassed++;
             if(timePassed > baseTime * countTime)
             {
-                float x = Random.Range(-17f, 11f);
-                Transform pos = transform;
-                pos.position = transform.position - transform.position;
-                pos.position += new Vector3(x, -5f, 0);
-                Instantiate(prefab, pos);
                 countTime++;
+                SpawnEnemy();
             }
             mins = Mathf.FloorToInt(timeLeft / 60);
             secs = Mathf.FloorToInt(timeLeft % 60);
             GetComponent<Text>().text = mins.ToString("00") + ":" + secs.ToString("00");
         }
+    }
+
+    void SpawnEnemy()
+    {
+        float x = Random.Range(-17f, 11f);
+        sp = new Vector2(x, -5f);
+        Debug.Log("spawn");
+        GameObject go = Instantiate(ball, sp, transform.rotation).gameObject;
     }
 }
